@@ -40,12 +40,12 @@ function CreateTmpPNG {
     Add-Type -AssemblyName System.Drawing
 
     $tmpfilename = ".\tmp.png" 
-    $size = new-object System.Drawing.Bitmap 100,30 
+    $bmp = new-object System.Drawing.Bitmap 100,30 
     $font = new-object System.Drawing.Font Consolas,10 
     $BodyBg = [System.Drawing.Brushes]::Black 
     $BodyFg = [System.Drawing.Brushes]::Red 
-    $graphics = [System.Drawing.Graphics]::FromImage($size) 
-    $graphics.FillRectangle($BodyBg,0,0,$size.Width,$size.Height) 
+    $graphics = [System.Drawing.Graphics]::FromImage($bmp) 
+    $graphics.FillRectangle($BodyBg,0,0,$bmp.Width,$bmp.Height) 
     $graphics.DrawString("OhadH"+("{0:d6}" -f (Get-Random -Minimum 1 -Maximum 9999999)),$font,$BodyFg,10,10) 
     $graphics.Dispose() 
     $bmp.Save($tmpfilename) 
